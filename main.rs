@@ -10,10 +10,17 @@ extern {
 }
 
 fn main() {
+    print!("Rust: ");
+    for arg in args() {
+        print!("{} ", arg);
+    }
+    println!("");
+
     let arg_ptrs = args().map(|arg| CString::new(arg).unwrap().as_ptr())
                          .collect::<Vec<*const c_char>>();
     unsafe {
         printargs(arg_ptrs.len() as c_int, arg_ptrs.as_ptr());
     }
+    println!("");
 }
 
