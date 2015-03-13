@@ -1,5 +1,4 @@
 #![feature(libc)]
-
 extern crate libc;
 use libc::{c_char, c_int};
 use std::env::args;
