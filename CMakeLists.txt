@@ -1,0 +1,12 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+PROJECT(argsexample)
+
+ADD_DEFINITIONS(-std=gnu99 -Wall -Wextra -Werror -fPIC)
+
+FILE(GLOB C_FILES *.c)
+FILE(GLOB RUST_FILES *.rs)
+ADD_LIBRARY(printargs STATIC ${C_FILES})
+ADD_CUSTOM_TARGET(argsexamaple ALL
+    COMMAND rustc ${RUST_FILES} -L ./
+    DEPENDS printargs)
+
